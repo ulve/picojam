@@ -3,7 +3,7 @@
     <div class="wrapper" :style="{ 'background-color': themeColor }">
         <div class="not-presented" v-if="!presented">
             <h1 class="title">{{themeTitle}}</h1>          
-            <button @click="onPresent">Titta</button>
+            <eight-bit-button title="Visa" @clicked="onPresent"/>
         </div>
         <div class="presented" v-if="presented">
             <h1 class="title">{{themeTitle}}</h1>
@@ -15,7 +15,12 @@
 </template>
 
 <script>
+import EightBitButton from '~/components/EightBitButton.vue'
+
 export default {
+  components: {
+    EightBitButton
+  },
     props: ['value', 'title', 'color'],
     data: function() {
         return {
