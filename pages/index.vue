@@ -1,9 +1,8 @@
 <template>
-  <section class="container">
+  <div class="container">
     <div>
-      <h1 class="title">
-        PicoJam
-      </h1>
+      <h1 class="title">PicoJam</h1>
+      
       <presenter title="Genre" :value="v1" @presented="t1Presented" color="#F00"/>      
       <transition name="t2" enter-active-class="animated tada">
         <presenter v-if="t2Enabled" title="Tema" :value="v2" @presented="t2Presented" color="#0F0"/>
@@ -11,8 +10,9 @@
       <transition name="t2" enter-active-class="animated tada">
         <presenter v-if="t3Enabled" title="Quirk" :value="v3" color="#00F"/>   
       </transition>
-    </div>
-  </section>
+  </div>
+  </div>
+
 </template>
 
 <script>
@@ -63,8 +63,22 @@ body {
   font-family: 'Press Start 2P', cursive;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 82px;
   color: #35495e;
   letter-spacing: 1px;
 }
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 700px)  {
+.title {
+  font-family: 'Press Start 2P', cursive;
+  display: block;
+  font-weight: 300;
+  font-size: 40px;
+  color: #35495e;
+  letter-spacing: 1px;
+}
+
+  }
 </style>

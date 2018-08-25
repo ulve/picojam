@@ -16,6 +16,26 @@ export default {
 </script>
 
 <style scoped>
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 700px)  {
+.eightbit-btn {
+    background: #92CD41;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 12px;
+    font-family: 'Press Start 2P', cursive;
+    text-decoration: none; 
+    color: white;
+    box-shadow: inset (-4px) (-4px) 0px 0px #4AA52E;
+    width: 120px;
+}
+}
+@media only screen 
+  and (min-device-width: 700px) {
 .eightbit-btn {
     background: #92CD41;
     display: inline-block;
@@ -28,6 +48,7 @@ export default {
     color: white;
     box-shadow: inset (-4px) (-4px) 0px 0px #4AA52E;
     width: 150px;
+}
 }
 .eightbit-btn:hover,
 .eightbit-btn:focus {
