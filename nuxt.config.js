@@ -11,7 +11,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Press+Start+2P' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Press+Start+2P' },
+      { href: "https://cdn.jsdelivr.net/npm/animate.css@3.5.1", rel: "stylesheet"}
     ]
   },
   /*

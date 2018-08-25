@@ -5,9 +5,13 @@
       <h1 class="title">
         PicoJam
       </h1>
-      <presenter :title="t1" :value="v1" @presented="t1Presented" color="#F00"/>      
-      <presenter v-if="t2Enabled" :title="t2" :value="v2" @presented="t2Presented"/>
-      <presenter v-if="t3Enabled" :title="t3" :value="v3" />   
+      <presenter title="Genre" value="rollspel" @presented="t1Presented" color="#F00"/>      
+          <transition name="t2" enter-active-class="animated tada">
+            <presenter v-if="t2Enabled" title="Tema" value="...när monstren kommer" @presented="t2Presented" color="#0F0"/>
+          </transition>
+          <transition name="t2" enter-active-class="animated tada">
+            <presenter v-if="t3Enabled" title="Quirk" value="kan en backa" color="#00F"/>   
+          </transition>
     </div>
   </section>
 </template>
@@ -48,6 +52,9 @@ export default {
 </script>
 
 <style>
+body {
+  background: url('~/assets/bg.png');
+}
 .container {
   min-height: 100vh;
   display: flex;
