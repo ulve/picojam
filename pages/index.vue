@@ -1,42 +1,36 @@
 <template>
   <section class="container">
     <div>
-      <!-- <logo/> -->
       <h1 class="title">
         PicoJam
       </h1>
-      <presenter title="Genre" value="rollspel" @presented="t1Presented" color="#F00"/>      
-          <transition name="t2" enter-active-class="animated tada">
-            <presenter v-if="t2Enabled" title="Tema" value="...när monstren kommer" @presented="t2Presented" color="#0F0"/>
-          </transition>
-          <transition name="t2" enter-active-class="animated tada">
-            <presenter v-if="t3Enabled" title="Quirk" value="kan en backa" color="#00F"/>   
-          </transition>
+      <presenter title="Genre" :value="v1" @presented="t1Presented" color="#F00"/>      
+      <transition name="t2" enter-active-class="animated tada">
+        <presenter v-if="t2Enabled" title="Tema" :value="v2" @presented="t2Presented" color="#0F0"/>
+      </transition>
+      <transition name="t2" enter-active-class="animated tada">
+        <presenter v-if="t3Enabled" title="Quirk" :value="v3" color="#00F"/>   
+      </transition>
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
 import Presenter from '~/components/Presenter.vue'
 
 export default {
   components: {
-    Logo,
     Presenter
   },
   data: function() {
     return {
-      t1: 'Titel t1',
-      v1: 'Value v1',
+      v1: 'rollspel',
       t2Enabled: false,
 
-      t2: 'Titel t2',
-      v2: 'Value v2',
+      v2: '...när monstren kommer',
       t3Enabled: false,
 
-      t3: 'Titel t3',
-      v3: 'Value v3'
+      v3: '...kan ej backa'
     }
   },
   methods: {
@@ -54,6 +48,8 @@ export default {
 <style>
 body {
   background: url('~/assets/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .container {
   min-height: 100vh;
@@ -71,6 +67,4 @@ body {
   color: #35495e;
   letter-spacing: 1px;
 }
-
 </style>
-

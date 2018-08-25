@@ -2,11 +2,14 @@
 <div>
     <section class="section-8-bit">
         <div class="wrapper" :style="{ 'background-color': themeColor }">   
-            <div class="not-presented">
+            <div>
                 <h1 class="title">{{themeTitle}}</h1>          
-                <eight-bit-button v-if="!presented" title="Visa" @clicked="onPresent"/>
+                <transition name="apa" enter-active-class="animated lightSpeedIn">
                     <h2 v-if="presented" class="value">{{themeValue}}</h2>
-
+                </transition>
+                <transition name="apa2" leave-active-class="animated flash">
+                    <eight-bit-button v-if="selecting" title="Visa" @clicked="onPresent"/>
+                </transition>
             </div>
         </div>
     </section>
@@ -15,6 +18,7 @@
 
 <script>
 import EightBitButton from "~/components/EightBitButton.vue";
+import { setTimeout } from 'timers';
 
 export default {
   components: {
@@ -26,20 +30,25 @@ export default {
       themeTitle: this.title,
       themeValue: this.value,
       themeColor: this.color,
-      presented: false
+      presented: false,
+      selecting: true
     };
   },
   methods: {
     onPresent: function() {
-      this.presented = true;
-      this.$emit("presented");
+        this.selecting = false;
+      
+        setTimeout(() => {
+            this.presented= true; 
+            setTimeout(() => this.$emit("presented"), 1000)
+        }, 1000);
     }
   }
 };
 </script>
 
 <style scoped>
-.not-presented .title {
+.title {
   font-family: "Press Start 2P", cursive;
   color: #FAFAFA;
   font-size: 42px;
