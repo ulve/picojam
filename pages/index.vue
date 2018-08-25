@@ -1,20 +1,23 @@
 <template>
   <section class="container">
     <div>
-      <app-logo/>
+      <logo/>
       <h1 class="title">
-        pico-jam
+        PicoJam
       </h1>
+      <presenter title="Titel" value="Värde" />
     </div>
   </section>
 </template>
 
 <script>
-import AppLogo from '~/components/Logo.vue'
+import Logo from '~/components/Logo.vue'
+import Presenter from '~/components/Presenter.vue'
 
 export default {
   components: {
-    AppLogo
+    Logo,
+    Presenter
   }
 }
 </script>
