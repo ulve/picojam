@@ -2,6 +2,7 @@
     <div>
         <h1>{{themeTitle}}</h1>
         <h2>{{themeValue}}</h2>
+        <button @click="$emit('presented')">Titta</button>
     </div>
 </template>
 
