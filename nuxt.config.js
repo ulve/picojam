@@ -10,7 +10,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Pico 8 theme presenter' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Press+Start+2P' }
     ]
   },
   /*

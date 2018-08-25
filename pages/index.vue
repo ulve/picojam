@@ -1,15 +1,13 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
+      <!-- <logo/> -->
       <h1 class="title">
         PicoJam
       </h1>
-      <presenter :title="t1" :value="v1" @presented="t1Presented"/>      
+      <presenter :title="t1" :value="v1" @presented="t1Presented" color="#F00"/>      
       <presenter v-if="t2Enabled" :title="t2" :value="v2" @presented="t2Presented"/>
-      <presenter v-if="t3Enabled" :title="t3" :value="v3" />
-
-    
+      <presenter v-if="t3Enabled" :title="t3" :value="v3" />   
     </div>
   </section>
 </template>
@@ -28,9 +26,11 @@ export default {
       t1: 'Titel t1',
       v1: 'Value v1',
       t2Enabled: false,
+
       t2: 'Titel t2',
       v2: 'Value v2',
       t3Enabled: false,
+
       t3: 'Titel t3',
       v3: 'Value v3'
     }
@@ -57,7 +57,7 @@ export default {
 }
 
 .title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
+  font-family: 'Press Start 2P', cursive;
   display: block;
   font-weight: 300;
   font-size: 100px;
@@ -65,16 +65,5 @@ export default {
   letter-spacing: 1px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
 
