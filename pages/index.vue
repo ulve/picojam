@@ -16,7 +16,14 @@
 </template>
 
 <script>
-import Presenter from '~/components/Presenter.vue'
+import Presenter from "~/components/Presenter.vue";
+
+function seddedRnd() {
+  const seed = new Date().setHours(0, 0, 0, 0);
+  const x = Math.sin(seed) * 10000;
+
+  return x - Math.floor(x);
+}
 
 export default {
   components: {
@@ -24,14 +31,9 @@ export default {
   },
   data: function() {
     return {
-      v1: 'rollspel',
       t2Enabled: false,
-
-      v2: '...när monstren kommer',
-      t3Enabled: false,
-
-      v3: '...kan ej backa'
-    }
+      t3Enabled: false
+    };
   },
   methods: {
     t1Presented: function() {
@@ -41,13 +43,54 @@ export default {
     t2Presented: function() {
       this.t3Enabled = true;
     }
-  } 
-}
+  },
+  beforeMount: function() {
+    const genres = [
+      "Rollspel",
+      "Simulator",
+      "JRPG",
+      "Plattform",
+      "Shooter",
+      "Survival",
+      "Rythm",
+      "Stealth",
+      "Beat 'em up",
+      "Horror",
+      "Tactical RPG",
+      "4X",
+      "Sport",
+      "Racing"
+    ];
+
+    const themes = [
+      "mörker och ljus",
+      "dimma",
+      "att vara rolig",
+      "vind",
+      "förr och nu",
+      "sjunker",
+      "upp och ner",
+      "grader och vinklar",
+      "sand",
+      "switch",
+      "kopplingar",
+      "städer och landsbygd",
+      "upp",
+      "råvarubrist"
+    ];
+
+    const quirks = ["inget rött", "går ej att backa", "risk att bli blind"];
+
+    this.v1 = genres[Math.floor(seddedRnd() * genres.length)];
+    this.v2 = themes[Math.floor(seddedRnd() * themes.length)];
+    this.v3 = quirks[Math.floor(seddedRnd() * quirks.length)];
+  }
+};
 </script>
 
 <style>
 body {
-  background: url('~/assets/bg.png');
+  background: url("~/assets/bg.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -60,7 +103,7 @@ body {
 }
 
 .title {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   display: block;
   font-weight: 300;
   font-size: 82px;
@@ -68,17 +111,14 @@ body {
   letter-spacing: 1px;
 }
 
-@media only screen 
-  and (min-device-width: 300px) 
-  and (max-device-width: 700px)  {
-.title {
-  font-family: 'Press Start 2P', cursive;
-  display: block;
-  font-weight: 300;
-  font-size: 40px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
+@media only screen and (min-device-width: 300px) and (max-device-width: 700px) {
+  .title {
+    font-family: "Press Start 2P", cursive;
+    display: block;
+    font-weight: 300;
+    font-size: 40px;
+    color: #35495e;
+    letter-spacing: 1px;
   }
+}
 </style>
