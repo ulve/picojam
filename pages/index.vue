@@ -19,7 +19,14 @@
 import Presenter from "~/components/Presenter.vue";
 
 function seddedRnd() {
-  const seed = new Date().setHours(0, 0, 0, 0);
+  /* Here is where you configure the event. Should perhaps be through url */
+  const eventStart = new Date("September 1, 2010 00:00:00");
+  const eventStop = new Date("September 2, 2010 23:59:99");
+  const currentDate = new Date().setHours(1, 0, 0, 0);
+  let seed = currentDate;
+  if (currentDate > eventStart && currentDate < eventStop) {
+    seed = eventStart;
+  }
   const x = Math.sin(seed) * 10000;
 
   return x - Math.floor(x);
