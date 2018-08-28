@@ -55,7 +55,6 @@ export default {
     const genres = [
       "Rollspel",
       "Simulator",
-      "JRPG",
       "Plattform",
       "Shooter",
       "Survival",
@@ -66,7 +65,8 @@ export default {
       "Tactical RPG",
       "4X",
       "Sport",
-      "Racing"
+      "Racing",
+      "Pussel"
     ];
 
     const themes = [
@@ -119,10 +119,22 @@ export default {
       "magi",
       "tåg",
       "skatter",
-      "vinter"
+      "vinter",
+      "pirater",
+      "riddare",
+      "svensk film",
+      "leksak",
+      "djungel"
     ];
 
-    const quirks = ["inget rött", "går ej att backa", "risk att bli blind"];
+    const quirks = [
+      "inget rött",
+      "går ej att backa",
+      "risk att bli blind",
+      "permadeath",
+      "en knapp",
+      "svartvit"
+    ];
 
     this.v1 = genres[Math.floor(seddedRnd() * genres.length)];
     this.v2 = themes[Math.floor(seddedRnd() * themes.length)];
