@@ -1,14 +1,18 @@
 <template>
 <div>
     <div class="section-8-bit">
-        <div class="wrapper" :style="{ 'background-color': themeColor }">   
+        <div class="wrapper" :style="{ 'background-color': color }">   
             <div>
-                <h1 class="title">{{themeTitle}}</h1>          
+                <h1 class="title">{{title}}</h1>          
                 <transition name="apa" enter-active-class="animated lightSpeedIn">
-                    <h2 v-if="presented" class="value">{{themeValue}}</h2>
+                    <h2 v-if="presented" :class="{'bounce animated': rerolled, 'value': true}">{{val}}</h2>
                 </transition>
                 <transition name="apa2" leave-active-class="animated flash">
                     <eight-bit-button v-if="selecting" title="Visa" @clicked="onPresent"/>
+                </transition>
+
+                <transition name="apa3" enter-active-class="animated lightSpeedIn" leave-active-class="animated flash">
+                  <eight-bit-button v-if="presented && rerolls > 0" title="Njae" @clicked="onReroll"/>
                 </transition>
             </div>
         </div>
@@ -24,15 +28,20 @@ export default {
   components: {
     EightBitButton
   },
-  props: ["value", "title", "color"],
+  props: ["value", "title", "color", "rerolls"],
   data: function() {
     return {
-      themeTitle: this.title,
-      themeValue: this.value,
-      themeColor: this.color,
       presented: false,
-      selecting: true
+      selecting: true,
+      rerolled: false,
+      val: this.value
     };
+  },
+  watch: {
+    value: function(newValue) {
+      this.val = newValue;
+      this.rerolled = true;
+    }
   },
   methods: {
     onPresent: function() {
@@ -42,6 +51,9 @@ export default {
         this.presented = true;
         setTimeout(() => this.$emit("presented"), 1000);
       }, 1000);
+    },
+    onReroll: function() {
+      this.$emit("reroll");
     }
   }
 };

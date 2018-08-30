@@ -3,12 +3,29 @@
     <div>
       <h1 class="title">PicoJam</h1>
       
-      <presenter title="Genre" :value="v1" @presented="t1Presented" color="#F00"/>      
+      <presenter title="Genre" 
+                :value="v1" 
+                @presented="t1Presented" 
+                :rerolls="rerollv1 && rerolls > 0" 
+                @reroll="t1Reroll" 
+                color="#F00"/>      
       <transition name="t2" enter-active-class="animated tada">
-        <presenter v-if="t2Enabled" title="Tema" :value="v2" @presented="t2Presented" color="#0F0"/>
+        <presenter v-if="t2Enabled" 
+                  title="Tema" 
+                  :value="v2" 
+                  @presented="t2Presented" 
+                  :rerolls="rerollv2 && rerolls > 0" 
+                  @reroll="t2Reroll" 
+                  color="#0F0"/>
       </transition>
       <transition name="t2" enter-active-class="animated tada">
-        <presenter v-if="t3Enabled" title="Quirk" :value="v3" color="#00F"/>   
+        <presenter v-if="t3Enabled" 
+                  title="Quirk" 
+                  :value="v3" 
+                  @presented="t3Presented" 
+                  :rerolls="rerollv3 && rerolls > 0" 
+                  @reroll="t3Reroll" 
+                  color="#00F"/>   
       </transition>
   </div>
   </div>
@@ -20,8 +37,8 @@ import Presenter from "~/components/Presenter.vue";
 
 function seddedRnd() {
   /* Here is where you configure the event. Should perhaps be through url */
-  const eventStart = new Date("September 1, 2010 00:00:00");
-  const eventStop = new Date("September 2, 2010 23:59:99");
+  const eventStart = new Date("August 31, 2018 19:00:00");
+  const eventStop = new Date("September 2, 2018 23:59:99");
   const currentDate = new Date().setHours(1, 0, 0, 0);
   let seed = currentDate;
   if (currentDate > eventStart && currentDate < eventStop) {
@@ -39,7 +56,14 @@ export default {
   data: function() {
     return {
       t2Enabled: false,
-      t3Enabled: false
+      t3Enabled: false,
+      v1: "",
+      v2: "",
+      v3: "",
+      rerollv1: true,
+      rerollv2: true,
+      rerollv3: true,
+      rerolls: 1
     };
   },
   methods: {
@@ -47,8 +71,29 @@ export default {
       this.t2Enabled = true;
     },
 
+    t1Reroll: function() {
+      this.rerolls--;
+      this.rerollv1 = false;
+      this.v1 = this.v1reroll;
+    },
+
     t2Presented: function() {
       this.t3Enabled = true;
+      this.rerollv1 = false;
+    },
+
+    t2Reroll: function() {
+      this.rerolls--;
+      this.rerollv2 = false;
+      this.v2 = this.v2reroll;
+    },
+    t3Presented: function() {
+      this.rerollv2 = false;
+    },
+    t3Reroll: function() {
+      this.rerolls--;
+      this.rerollv3 = false;
+      this.v3 = this.v3reroll;
     }
   },
   beforeMount: function() {
@@ -137,8 +182,19 @@ export default {
     ];
 
     this.v1 = genres[Math.floor(seddedRnd() * genres.length)];
+    this.v1reroll = genres.filter(g => g != this.v1)[
+      Math.floor(seddedRnd() * (genres.length - 1))
+    ];
+
     this.v2 = themes[Math.floor(seddedRnd() * themes.length)];
+    this.v2reroll = themes.filter(t => t != this.v2)[
+      Math.floor(seddedRnd() * (themes.length - 1))
+    ];
+
     this.v3 = quirks[Math.floor(seddedRnd() * quirks.length)];
+    this.v3reroll = quirks.filter(q => q != this.v3)[
+      Math.floor(seddedRnd() * (quirks.length - 1))
+    ];
   }
 };
 </script>
