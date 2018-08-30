@@ -5,14 +5,14 @@
             <div>
                 <h1 class="title">{{title}}</h1>          
                 <transition name="apa" enter-active-class="animated lightSpeedIn">
-                    <h2 v-if="presented" class="value">{{value}}</h2>
+                    <h2 v-if="presented" :class="{'bounce animated': rerolled, 'value': true}">{{val}}</h2>
                 </transition>
                 <transition name="apa2" leave-active-class="animated flash">
                     <eight-bit-button v-if="selecting" title="Visa" @clicked="onPresent"/>
                 </transition>
 
-                <transition name="apa" enter-active-class="animated lightSpeedIn">
-                  <eight-bit-button v-if="presented && rerolls > 0" title="Reroll" @clicked="onReroll"/>
+                <transition name="apa3" enter-active-class="animated lightSpeedIn" leave-active-class="animated flash">
+                  <eight-bit-button v-if="presented && rerolls > 0" title="Njae" @clicked="onReroll"/>
                 </transition>
             </div>
         </div>
@@ -32,8 +32,16 @@ export default {
   data: function() {
     return {
       presented: false,
-      selecting: true
+      selecting: true,
+      rerolled: false,
+      val: this.value
     };
+  },
+  watch: {
+    value: function(newValue) {
+      this.val = newValue;
+      this.rerolled = true;
+    }
   },
   methods: {
     onPresent: function() {
