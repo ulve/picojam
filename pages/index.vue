@@ -178,7 +178,15 @@ export default {
       "risk att bli blind",
       "permadeath",
       "en knapp",
-      "svartvit"
+      "svartvit",
+      "död = starkare",
+      "glitch",
+      "upp och ner",
+      "stor",
+      "konstigt språk",
+      "diagonal förflyttnig",
+      "ramar",
+      "skada påverkar kontroller"
     ];
 
     this.v1 = genres[Math.floor(seddedRnd() * genres.length)];
