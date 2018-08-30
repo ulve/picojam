@@ -37,8 +37,8 @@ import Presenter from "~/components/Presenter.vue";
 
 function seddedRnd() {
   /* Here is where you configure the event. Should perhaps be through url */
-  const eventStart = new Date("September 1, 2010 00:00:00");
-  const eventStop = new Date("September 2, 2010 23:59:99");
+  const eventStart = new Date("August 31, 2018 19:00:00");
+  const eventStop = new Date("September 2, 2018 23:59:99");
   const currentDate = new Date().setHours(1, 0, 0, 0);
   let seed = currentDate;
   if (currentDate > eventStart && currentDate < eventStop) {
